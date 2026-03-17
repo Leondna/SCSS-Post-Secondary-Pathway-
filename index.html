@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post-Secondary Pathway Explorer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <h1>Post-Secondary Pathway Explorer</h1>
+      <p>Choose subjects and levels to see which pathways may be open.</p>
+    </div>
+    <button id="resetAllBtn" class="btn btn-secondary">Reset</button>
+  </header>
+
+  <main class="app-grid">
+    <section class="panel panel-input">
+      <div class="panel-header">
+        <h2>1. Build subject profile</h2>
+        <p>Select a subject, then choose its level.</p>
+      </div>
+
+      <div class="add-subject-box">
+        <label for="subjectSearch">Search subject</label>
+        <input id="subjectSearch" type="text" placeholder="Type to filter subjects" autocomplete="off" />
+
+        <label for="subjectSelect">Subject</label>
+        <select id="subjectSelect"></select>
+
+        <div class="level-row">
+          <span>Level</span>
+          <div id="levelOptions" class="level-options"></div>
+        </div>
+
+        <button id="addSubjectBtn" class="btn btn-primary">Add subject</button>
+      </div>
+
+      <div class="selected-header">
+        <h3>Selected subjects</h3>
+        <span id="selectedCount" class="count-pill">0</span>
+      </div>
+      <div id="selectedSubjects" class="selected-list empty-state">
+        No subjects added yet.
+      </div>
+    </section>
+
+    <section class="panel panel-summary">
+      <div class="panel-header">
+        <h2>2. Live summary</h2>
+        <p>Higher-level subjects count toward lower-level thresholds.</p>
+      </div>
+
+      <div class="summary-grid">
+        <div class="stat-card">
+          <h3>Actual counts</h3>
+          <ul>
+            <li>G1: <strong id="actualG1">0</strong></li>
+            <li>G2: <strong id="actualG2">0</strong></li>
+            <li>G3: <strong id="actualG3">0</strong></li>
+          </ul>
+        </div>
+
+        <div class="stat-card">
+          <h3>Equivalent counts</h3>
+          <ul>
+            <li>G1-equivalent: <strong id="eqG1">0</strong></li>
+            <li>G2-equivalent: <strong id="eqG2">0</strong></li>
+            <li>G3 count: <strong id="eqG3">0</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flag-card">
+        <h3>Requirement checks</h3>
+        <div id="flagList" class="flag-list"></div>
+      </div>
+
+      <div class="progress-card">
+        <h3>Progress to thresholds</h3>
+        <div id="progressList" class="progress-list"></div>
+      </div>
+
+      <div class="note-card">
+        <h3>How the checker works</h3>
+        <ul>
+          <li>1 G3 subject can satisfy a G2 requirement.</li>
+          <li>1 G2 subject can satisfy a G1 requirement.</li>
+          <li>Placement is not guaranteed even when a threshold is met.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel panel-results">
+      <div class="panel-header">
+        <h2>3. Pathway results</h2>
+        <p>Cards update instantly based on current selections.</p>
+      </div>
+
+      <div id="adviceBox" class="advice-box"></div>
+      <div id="pathwayCards" class="pathway-grid"></div>
+    </section>
+  </main>
+
+  <template id="subjectRowTemplate">
+    <div class="subject-row">
+      <div class="subject-main">
+        <div class="subject-name"></div>
+        <div class="subject-levels"></div>
+      </div>
+      <button class="remove-btn" type="button" aria-label="Remove subject">Remove</button>
+    </div>
+  </template>
+
+  <script src="index.js"></script>
+</body>
+</html>
