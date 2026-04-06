@@ -1,9 +1,0 @@
-Validation summary
-==================
-has Progress tracker heading: PASS
-removed Live summary text: PASS
-removed Requirement flags heading: PASS
-removed summaryCards element: PASS
-kept progressList element: PASS
-
-js_syntax: PASS
